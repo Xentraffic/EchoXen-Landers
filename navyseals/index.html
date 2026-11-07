@@ -150,5 +150,21 @@
         <p><strong>DISCLAIMER:</strong> Results may vary from person to person. This website's content is based upon the author's opinion and is provided as an "AS IS" and "AS AVAILABLE" basis. You should do your own research and confirm the information with other sources when searching for information regarding health issues. The author is not engaged in rendering medical or similar professional services or advice via this website, and the information provided is not intended to replace medical advice offered by a licensed health care provider. Please consult a health professional before implementing any strategy discussed on this website.</p>
         <a href="https://healthwayslife.com/privacy-policy">Privacy Policy</a> | <a href="https://healthwayslife.com/terms-of-service">Terms of Service</a>
     </div>
+<script>
+// Everflow click-ID passthrough (2026-11-07, Remi): Everflow URL 11069 lands here with
+// aff_id / subid2={transaction_id} / subid3={affiliate_id}. Copy the incoming query string
+// onto every buyechoxen.com link so the click ID reaches the VSL and BuyGoods checkout.
+(function(){
+  var q=location.search.replace(/^\?/,''); if(!q) return;
+  var links=document.querySelectorAll('a[href*="buyechoxen.com"]');
+  for(var i=0;i<links.length;i++){
+    try{
+      var u=new URL(links[i].href), inc=new URLSearchParams(q);
+      inc.forEach(function(v,k){ if(!u.searchParams.has(k)) u.searchParams.set(k,v); });
+      links[i].href=u.toString();
+    }catch(e){}
+  }
+})();
+</script>
 </body>
 </html>
